@@ -83,13 +83,13 @@ class NewWindow extends React.PureComponent {
       const width = window.innerWidth
         ? window.innerWidth
         : document.documentElement.clientWidth
-          ? document.documentElement.clientWidth
-          : screen.width
+        ? document.documentElement.clientWidth
+        : screen.width
       const height = window.innerHeight
         ? window.innerHeight
         : document.documentElement.clientHeight
-          ? document.documentElement.clientHeight
-          : screen.height
+        ? document.documentElement.clientHeight
+        : screen.height
 
       features.left = width / 2 - features.width / 2 + screenLeft
       features.top = height / 2 - features.height / 2 + screenTop
@@ -111,6 +111,11 @@ class NewWindow extends React.PureComponent {
     if (this.window) {
       this.window.document.title = title
       this.window.document.body.appendChild(this.container)
+
+      // If specified, add a className to to root container
+      if (this.props.className) {
+        this.container.classList.add(this.props.className)
+      }
 
       // If specified, copy styles from parent window's document.
       if (this.props.copyStyles) {
@@ -169,7 +174,8 @@ NewWindow.propTypes = {
   onUnload: PropTypes.func,
   onBlock: PropTypes.func,
   center: PropTypes.oneOf(['parent', 'screen']),
-  copyStyles: PropTypes.bool
+  copyStyles: PropTypes.bool,
+  className: PropTypes.string
 }
 
 /**
