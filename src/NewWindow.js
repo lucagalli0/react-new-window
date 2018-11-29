@@ -47,7 +47,10 @@ class NewWindow extends React.PureComponent {
    */
   render() {
     if (!this.state.mounted) return null
-    return ReactDOM.createPortal(this.props.children, this.container)
+    return ReactDOM.createPortal(
+      this.props.children(this.container),
+      this.container
+    )
   }
 
   componentDidMount() {
