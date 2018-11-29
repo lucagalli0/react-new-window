@@ -114,7 +114,7 @@ class NewWindow extends React.PureComponent {
 
       // If specified, add a className to to root container
       if (this.props.className) {
-        this.container.classList.add(this.props.className)
+        this.container.className = this.props.className
       }
 
       // If specified, copy styles from parent window's document.
